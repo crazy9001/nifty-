@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { DashboardModule } from './dashboard/dashboard.module';
 import {LoginComponent} from './login/login.component';
+import {SiteLayoutComponent} from './_layouts/site-layout/site-layout.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routesConfig: Routes = [
+    {
+        path: '',
+        component: SiteLayoutComponent,
+        children: [
+            { path: '', component: DashboardComponent, pathMatch: 'full'},
+            { path: 'dashboard', component: DashboardComponent}
+        ]
+    },
     { path: 'login', component: LoginComponent},
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 
 @NgModule({
     imports: [
-        DashboardModule,
         RouterModule.forRoot(routesConfig),
         CommonModule
     ],

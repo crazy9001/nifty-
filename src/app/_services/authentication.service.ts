@@ -9,7 +9,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>('http://localhost:8000/v1/authenticate/login', {username: username, password: password})
+        return this.http.post<any>(`${config.apiUrl}/authenticate/login`, {username: username, password: password})
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.data.token) {

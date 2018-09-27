@@ -8,12 +8,13 @@ import { AlertService, AuthenticationService } from './_services';
 
 import {AppComponent} from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './_layouts/header/header.component';
+import { FooterComponent } from './_layouts/footer/footer.component';
+import { NavbarComponent } from './_layouts/navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './_directives';
+import { SiteLayoutComponent } from './_layouts/site-layout/site-layout.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
     declarations: [
@@ -21,9 +22,10 @@ import { AlertComponent } from './_directives';
         HeaderComponent,
         FooterComponent,
         NavbarComponent,
-        HomeComponent,
         LoginComponent,
-        AlertComponent
+        AlertComponent,
+        SiteLayoutComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
