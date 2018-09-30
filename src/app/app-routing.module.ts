@@ -4,14 +4,19 @@ import { CommonModule } from '@angular/common';
 import {LoginComponent} from './login/login.component';
 import {SiteLayoutComponent} from './_layouts/site-layout/site-layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import { AuthGuard } from './_guards';
 
 const routesConfig: Routes = [
     {
         path: '',
         component: SiteLayoutComponent,
+        canActivate: [AuthGuard],
         children: [
             { path: '', component: DashboardComponent, pathMatch: 'full'},
-            { path: 'dashboard', component: DashboardComponent}
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+            }
         ]
     },
     { path: 'login', component: LoginComponent},
