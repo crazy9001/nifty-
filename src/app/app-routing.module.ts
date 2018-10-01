@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {SiteLayoutComponent} from './_layouts/site-layout/site-layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { AuthGuard } from './_guards';
+import {UsersComponent} from './users/users.component';
 
 const routesConfig: Routes = [
     {
@@ -12,10 +13,18 @@ const routesConfig: Routes = [
         component: SiteLayoutComponent,
         canActivate: [AuthGuard],
         children: [
-            { path: '', component: DashboardComponent, pathMatch: 'full'},
+            {
+                path: '',
+                component: DashboardComponent,
+                pathMatch: 'full'
+            },
             {
                 path: 'dashboard',
                 component: DashboardComponent,
+            },
+            {
+                path: 'users',
+                component: UsersComponent
             }
         ]
     },

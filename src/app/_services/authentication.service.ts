@@ -12,11 +12,16 @@ export class AuthenticationService {
         return this.http.post<any>(environment.apiEndPoin + 'authenticate/login', {username: username, password: password})
             .pipe(map(data => {
                 // login successful if there's a jwt token in the response
-                if (data) {
+                if (data.success === true) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('token', JSON.stringify(data.token));
+                    localStorage.setItem('token', data.data.token);
                 }
                 return data;
             }));
+    }
+
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('token');
     }
 }

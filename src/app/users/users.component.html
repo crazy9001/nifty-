@@ -1,0 +1,43 @@
+<div id="content-container">
+    <div id="page-head">
+
+        <div id="page-title">
+            <h1 class="page-header text-overflow">Quản lý users</h1>
+        </div>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="demo-pli-home"></i></a></li>
+            <li class="active">Danh sách users</li>
+        </ol>
+
+    </div>
+    <div id="page-content">
+        <div class="panel">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Tên tài khoản</th>
+                        <th>Email</th>
+                        <th class="min-tablet">Trạng thái</th>
+                        <th class="min-tablet">Sửa</th>
+                        <th class="min-desktop">Reset password</th>
+                        <th class="min-desktop">Quyền</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.username ? user.username : '' }}</td>
+                        <td>{{ user.email ? user.email : '' }}</td>
+                        <td><i class="ion-alert"></i></td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

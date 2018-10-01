@@ -1,11 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
 import {AlertService, AuthenticationService} from './_services';
-
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HeaderComponent} from './_layouts/header/header.component';
@@ -16,6 +13,8 @@ import {AlertComponent} from './_directives';
 import {SiteLayoutComponent} from './_layouts/site-layout/site-layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {JwtInterceptor} from './_helpers';
+import {ErrorInterceptor} from './_helpers';
+import {UsersComponent} from './users/users.component';
 
 @NgModule({
     declarations: [
@@ -26,13 +25,13 @@ import {JwtInterceptor} from './_helpers';
         LoginComponent,
         AlertComponent,
         SiteLayoutComponent,
-        DashboardComponent
+        DashboardComponent,
+        UsersComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        HttpModule,
         FormsModule,
         HttpClientModule
     ],
@@ -40,6 +39,7 @@ import {JwtInterceptor} from './_helpers';
         AlertService,
         AuthenticationService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
 })
